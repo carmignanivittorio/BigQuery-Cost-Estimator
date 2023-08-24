@@ -1,2 +1,1 @@
-# BigQuery-Cost-Estimator
- 
+# BigQuery-Cost-Estimator Chrome Extension
