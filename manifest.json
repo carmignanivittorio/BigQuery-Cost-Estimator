@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "BigQuery Cost Estimator",
+  "version": "1.0",
+  "description": "Estimates BigQuery spend based on processed data",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://console.cloud.google.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://console.cloud.google.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {}
+}
