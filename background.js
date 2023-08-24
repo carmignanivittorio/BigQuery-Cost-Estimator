@@ -1,6 +1,6 @@
 function checkAndUpdateContent(tabId) {
     chrome.scripting.executeScript({
-        target: { tabId: tabId },
+        target: {tabId: tabId},
         files: ['content.js']
     });
 }

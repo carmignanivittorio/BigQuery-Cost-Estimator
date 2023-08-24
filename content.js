@@ -49,23 +49,23 @@ if (!window.bqCostObserverInitiated) {
     }
 
     const bqCostObserver = new MutationObserver(mutations => {
-    for (const mutation of mutations) {
-        if (mutation.type === 'characterData') {
-            console.log("Character data mutation detected.");
-            processAndUpdateText(mutation.target);
-        } else if (mutation.type === 'childList') {
-            console.log("Child list mutation detected.");
-            for (const node of mutation.addedNodes) {
-                if (node.nodeType === 3 && node.nodeValue.includes("This query will process")) {
-                    console.log("Target text node found in child list mutation.");
-                    processAndUpdateText(node);
+        for (const mutation of mutations) {
+            if (mutation.type === 'characterData') {
+                console.log("Character data mutation detected.");
+                processAndUpdateText(mutation.target);
+            } else if (mutation.type === 'childList') {
+                console.log("Child list mutation detected.");
+                for (const node of mutation.addedNodes) {
+                    if (node.nodeType === 3 && node.nodeValue.includes("This query will process")) {
+                        console.log("Target text node found in child list mutation.");
+                        processAndUpdateText(node);
+                    }
                 }
             }
         }
-    }
-});
+    });
 
-bqCostObserver.observe(document.body, { childList: true, subtree: true, characterData: true });
+    bqCostObserver.observe(document.body, {childList: true, subtree: true, characterData: true});
 
 
     // This is a hack to force the observer to run on page load
