@@ -1,3 +1,21 @@
+# Developer Account Privacy Policy
+
+**Developer:** Vittorio Carmignani, [LinkedIn](https://www.linkedin.com/in/vittorio-carmignani/)
+
+**Last Updated:** 25/08/2023
+
+Thank you for using our Chrome extensions. This Privacy Policy explains what information our extensions may access and how we handle such information. Your privacy is crucial to us, and we are committed to ensuring the security and confidentiality of the data you provide.
+
+## General Principles
+
+- **No Data Storage:** None of our extensions store your data unless explicitly mentioned.
+  
+- **No Data Transmission:** We don’t transmit your data to external servers or third parties unless explicitly outlined.
+
+- **Direct Purpose:** We access data solely for the direct functionality of the extension and nothing else.
+
+## Extensions and Their Data Access
+
 # Privacy Policy for BigQuery Cost Estimator
 
 Last updated: 25/08/2023
