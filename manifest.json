@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "BigQuery Cost Estimator",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Estimates BigQuery spend based on processed data",
   "background": {
     "service_worker": "background.js"
