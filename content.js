@@ -2,7 +2,6 @@
 
 if (!window.bqCostObserverInitiated) {
     window.bqCostObserverInitiated = true;
-    console.log("bqCostObserverInitiated")
 
     function computeCost(size, unit) {
         const TB_TO_BYTES = 1e12;
@@ -33,10 +32,8 @@ if (!window.bqCostObserverInitiated) {
     }
 
     function processAndUpdateText(node) {
-        console.log("processAndUpdateText started")
         const regex = /This query will process ([\d.,]+) ([KBGM]B) when run\./;
         const match = node.nodeValue.match(regex);
-        console.log("processAndUpdateText match", match)
         if (match) {
             const size = parseFloat(match[1].replace(',', ''));
             const unit = match[2];
@@ -51,13 +48,10 @@ if (!window.bqCostObserverInitiated) {
     const bqCostObserver = new MutationObserver(mutations => {
         for (const mutation of mutations) {
             if (mutation.type === 'characterData') {
-                console.log("Character data mutation detected.");
                 processAndUpdateText(mutation.target);
             } else if (mutation.type === 'childList') {
-                console.log("Child list mutation detected.");
                 for (const node of mutation.addedNodes) {
                     if (node.nodeType === 3 && node.nodeValue.includes("This query will process")) {
-                        console.log("Target text node found in child list mutation.");
                         processAndUpdateText(node);
                     }
                 }
@@ -66,19 +60,5 @@ if (!window.bqCostObserverInitiated) {
     });
 
     bqCostObserver.observe(document.body, {childList: true, subtree: true, characterData: true});
-
-
-    // This is a hack to force the observer to run on page load
-    // because the observer only runs on mutations
-    // and the page doesn't mutate on load
-    const textNodes = document.evaluate("//text()", document, null, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null);
-    for (let i = 0; i < textNodes.snapshotLength; i++) {
-        const node = textNodes.snapshotItem(i);
-        if (node.nodeValue.includes("This query will process")) {
-            processAndUpdateText(node);
-        }
-    }
-
-    console.log("bqCostObserverInitiated done")
 
 }
