@@ -37,11 +37,8 @@ if (!window.bqCostObserverInitiated) {
         if (match) {
             const size = parseFloat(match[1].replace(',', ''));
             const unit = match[2];
-
             const cost = computeCost(size, unit);
-            const newText = `This query will process ${size} ${unit} when run (Estimated Cost: $${cost.toFixed(2)}).`;
-
-            node.nodeValue = node.nodeValue.replace(regex, newText);
+            node.nodeValue = `This query will process ${size} ${unit} when run (Estimated Cost: $${cost.toFixed(2)})`;
         }
     }
 
